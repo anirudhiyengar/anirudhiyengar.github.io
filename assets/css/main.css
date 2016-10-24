@@ -3196,7 +3196,7 @@
 				}
 
 					.features article .icon:before {
-						font-size: 1.5rem;
+						font-size: 1rem;
 					}
 
 					.features article .icon:after {
@@ -3210,7 +3210,7 @@
 		@media screen and (max-width: 480px) {
 
 			.features article .icon:before {
-				font-size: 1.25rem;
+				font-size: 1rem;
 			}
 
 		}
