@@ -3175,7 +3175,7 @@
 
 		}
 
-		@media screen and (max-width: 360px) {
+		@media screen and (max-width: 260px) {
 
 			.features article {
 				-moz-flex-direction: column;
