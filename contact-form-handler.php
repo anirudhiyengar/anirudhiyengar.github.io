@@ -1,30 +1,11 @@
 <?php 
-$errors = '';
-$myemail = 'asi7@psu.edu';//<-----Put Your email address here.
-if(empty($_POST['name'])  || 
-   empty($_POST['email']) || 
-   empty($_POST['message']))
-{
-    $errors .= "\n Error: all fields are required";
-}
 
-$name = '';
-$email_address = '';
-$message = '';
+$myemail = 'ani.s18@gmail.com';//<-----Put Your email address here.
 
-$name = isset($_POST['name']) ? $_POST['name'] : ''; 
-$email_address = isset($_POST['email']) ? $_POST['email'] : ''; 
-$message = isset($_POST['message']) ? $_POST['message'] : '';  
+$name = $_POST['name']; 
+$email_address = Trim(stripslashes($_POST['email'])); 
+$message = Trim(stripslashes($_POST['message'])); 
 
-if (!preg_match(
-"/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i", 
-$email_address))
-{
-    $errors .= "\n Error: Invalid email address";
-}
-
-if( empty($errors))
-{
 	$to = $myemail; 
 	$email_subject = "Contact form submission: $name";
 	$email_body = "You have received a new message. ".
@@ -33,23 +14,15 @@ if( empty($errors))
 	$headers = "From: $myemail\n"; 
 	$headers .= "Reply-To: $email_address";
 	
-	mail($to,$email_subject,$email_body,$headers);
+	$send = mail($to,$email_subject,$email_body,$headers);
+
+	if ($go){
+		print("Success!");
+	}
+	else{
+		print("Unable to send!!");
+	}
 	//redirect to the 'thank you' page
 	header('Location: contact-form-thank-you.html');
-} 
+ 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
-<html>
-<head>
-	<title>Contact form handler</title>
-</head>
-
-<body>
-<!-- This page is displayed only if there is some error -->
-<?php
-echo nl2br($errors);
-?>
-
-
-</body>
-</html>
