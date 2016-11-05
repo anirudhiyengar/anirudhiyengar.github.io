@@ -8,6 +8,10 @@ if(empty($_POST['name'])  ||
     $errors .= "\n Error: all fields are required";
 }
 
+$name = '';
+$email_address = '';
+$message = '';
+
 $name = $_POST['name']; 
 $email_address = $_POST['email']; 
 $message = $_POST['message']; 
