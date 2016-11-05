@@ -382,7 +382,40 @@
 									<!-- 	<li><a href="#" class="button">More</a></li> 	-->
 									</ul>
 								</section>
-						
+
+							<!-- Form -->	
+								<form method="post" name="contactform" action="contact-form-handler.php">
+									<h3>Form</h3>
+									<div class="row uniform">
+										<div class="6u 12u$(xsmall)">
+											<input type="text" name="name"  placeholder="Name" />
+										</div>
+										<div class="6u$ 12u$(xsmall)">
+											<input type="email" name="email"  placeholder="Email" />
+										</div>
+										<!-- Break -->
+										<div class="12u$">
+											<textarea name="message" placeholder="Enter your message" rows="6"></textarea>
+										</div>
+										<!-- Break -->
+										<div class="12u$">
+											<ul class="actions">
+												<li><input type="submit" value="Send Message" class="special" /></li>
+												<li><input type="reset" value="Cancel" class="special" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+
+								<script language="JavaScript">
+								// Code for validating the form
+								// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+								// for details
+								var frmvalidator  = new Validator("contactform");
+								frmvalidator.addValidation("name","req","Please provide your name"); 
+								frmvalidator.addValidation("email","req","Please provide your email"); 
+								frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+								</script>						
 
 							<!-- Footer -->
 								<footer id="footer">
