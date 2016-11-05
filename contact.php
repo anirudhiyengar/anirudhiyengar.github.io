@@ -1,15 +1,25 @@
 <?php 
 
+session_start();
+$errors = [];
+
+if(isset($_POST['name'],$_POST['email'], $_POST['message'])) {
+
+    $fields = [
+        'name' => $_POST['name'],
+        'email' => $_POST['email'],
+        'message' => $_POST['message'],
+    ];
+}
+
+
+
+
 $myemail = 'ani.s18@gmail.com';//<-----Put Your email address here.
 
-$name = $_POST['name'];
-print_r($_POST); 
+$name = $_POST['name']; 
 $email_address = Trim(stripslashes($_POST['email'])); 
-print_r($_POST);
 $message = Trim(stripslashes($_POST['message'])); 
-print_r($_POST);
-
-
 
 	$to = $myemail; 
 	$email_subject = "Contact form submission: $name";
@@ -19,7 +29,15 @@ print_r($_POST);
 	$headers = "From: $myemail\n"; 
 	$headers .= "Reply-To: $email_address";
 	
+	$send = mail($to,$email_subject,$email_body,$headers);
 
-
+	if ($go){
+		print("Success!");
+	}
+	else{
+		print("Unable to send!!");
+	}
+	//redirect to the 'thank you' page
+	header('Location: contact-form-thank-you.html');
  
 ?>
